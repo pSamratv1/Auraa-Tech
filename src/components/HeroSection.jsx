@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { FaHome } from "react-icons/fa";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
@@ -14,28 +14,25 @@ const HeroSection = () => {
     // Logo animation
     tl.fromTo(
       logoRef.current,
-      { x: "40vw", y: "45vh" },
+      { scale: 1, opacity: 1 },
       {
-        x: "-40px",
-        y: "-10px",
+        y: "10px",
         scale: 0.4,
+        opacity: 0,
         scrollTrigger: {
           trigger: logoRef.current,
           start: "top 45%",
           end: "top 15%",
           scrub: 2,
           pin: true,
+          toggleActions: "play none play play",
         },
       }
     );
   }, []);
 
   return (
-    <div className=" w-screen h-screen">
-      <div ref={logoRef} className="w-fit nunito text-8xl font-bold text-white">
-        Auraa
-      </div>
-    </div>
+    <div className="flex w-screen h-screen items-center justify-center"></div>
   );
 };
 

@@ -5,3 +5,23 @@
   font-weight: 600;
   font-style: normal;
 }
+.resize-object {
+  position: relative;
+  overflow: hidden; /* Ensures ripple stays inside the bounds */
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6); /* Light ripple effect */
+  transform: scale(0); /* Start from 0 scale */
+  animation: ripple-animation 0.6s linear; /* Trigger animation */
+  pointer-events: none; /* Prevent ripple from interfering with events */
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4); /* Adjust to make the ripple bigger */
+    opacity: 0;
+  }
+}
