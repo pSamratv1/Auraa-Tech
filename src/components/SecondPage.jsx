@@ -29,19 +29,29 @@ const SecondPage = () => {
       y: "38vh",
       width: "100%",
       height: "120px",
-      boderRadius: "0px",
+      borderRadius: "0px",
       scrub: 1,
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 60%",
         end: "top 50%",
         scrub: 1,
-        markers: true,
+
         toggleActions: "play reverse play reverse",
       },
     });
-
-   
+    // tl.to(boxRef.current, {
+    //   borderRadius: "0px",
+    //   scrub: 1,
+    //   scrollTrigger: {
+    //     trigger: boxRef.current,
+    //     start: "top 50%",
+    //     end: "top 50%",
+    //     scrub: 1,
+    //     markers: true,
+    //     toggleActions: "play reverse play reverse",
+    //   },
+    // });
   }, []);
 
   const handleRipple = (e) => {
