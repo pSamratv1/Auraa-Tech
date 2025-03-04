@@ -2,7 +2,8 @@ import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GsapNumberCounter from "./ui/GsapNumberCounter";
-import { HiSparkles } from "react-icons/hi";
+
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +11,7 @@ const SecondPage = () => {
   const containerRef = useRef(null);
   const boxRef = useRef(null);
   const pageRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -21,12 +23,12 @@ const SecondPage = () => {
         start: "top 100%",
         end: "top 60%",
         scrub: 1,
-
+        markers: true,
         toggleActions: "play reverse play reverse",
       },
     });
     tl.to(boxRef.current, {
-      y: "38vh",
+      y: "32vh",
       width: "100%",
       height: "120px",
       borderRadius: "0px",
@@ -36,19 +38,29 @@ const SecondPage = () => {
         start: "top 60%",
         end: "top 50%",
         scrub: 1,
-
+        markers: true,
+        toggleActions: "play reverse play reverse",
+      },
+    }).to(textRef.current, {
+      opacity: 1,
+      scrub: 1,
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 50%",
+        end: "top 49%",
+        markers: true,
         toggleActions: "play reverse play reverse",
       },
     });
-    // tl.to(boxRef.current, {
-    //   borderRadius: "0px",
+    // tl.to(pageRef.current, {
+    //   y: "-50vh",
     //   scrub: 1,
     //   scrollTrigger: {
     //     trigger: boxRef.current,
-    //     start: "top 50%",
+    //     start: "top 60%",
     //     end: "top 50%",
     //     scrub: 1,
-    //     markers: true,
+
     //     toggleActions: "play reverse play reverse",
     //   },
     // });
@@ -81,12 +93,12 @@ const SecondPage = () => {
     <>
       <div
         ref={containerRef}
-        className="relative flex h-full w-full justify-center z-[1]"
+        className="relative flex h-auto w-full justify-center z-[1] bg-gradient-to-r from-blue-900 to-blue-600"
       >
         <div
           ref={boxRef}
           className="resize-object absolute top-0  grid grid-cols-3 h-40 w-[50vw]
-         bg-blue-400 overflow-hidden rounded-2xl text-white opacity-0"
+         bg-blue-500 overflow-hidden rounded-2xl text-white opacity-0"
           onMouseEnter={handleRipple} // Trigger ripple effect on mouse click
         >
           <div className="w-full col-span-1 border-r border-slate-300 flex flex-col items-center justify-center space-y-2 ">
@@ -114,9 +126,18 @@ const SecondPage = () => {
           </div>
         </div>
       </div>
-      <div ref={pageRef} className="w-full h-full bg-blue-500 opacity-1">
-        s
-      </div>
+      <section className="h-full w-full bg-gradient-to-r from-blue-900 to-blue-600">
+        <div className="relative flex justify-center items-center w-full h-full opacity-0">
+          <div ref={textRef} className="flex flex-col items-center text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-white ">
+              Proven success, Impactful results
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-gray-200 ">
+              Unmatched growth for your business
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

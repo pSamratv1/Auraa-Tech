@@ -4,6 +4,7 @@ import SecondPage from "./components/SecondPage";
 import { FloatingNav } from "./components/ui/FloatingNavbar";
 import { FaHome } from "react-icons/fa";
 import { BrowserRouter as Router } from "react-router-dom";
+import ThirdPage from "./components/ThirdPage";
 
 const App = () => {
   const navItems = [
@@ -38,21 +39,8 @@ const App = () => {
     //   <HeroSection />
     //   <SecondPage />
     // </div>
-    <div className="h-screen w-screen relative">
-      <video
-        className="fixed top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-      >
-        <source
-          src="src/assets/3626148-uhd_2732_1440_25fps.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-
-      <div className="relative z-10 w-full h-full">
+    <div className="h-screen w-screen relative  text-white">
+      <div className="relative z-10 w-full h-full bg-gradient-to-r from-blue-900 to-blue-600">
         <Router>
           <FloatingNav navItems={navItems} />
           <HeroSection />
